@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{%- include head.html -%}
+
+    <div class="home">
+        <div class="page-heading">
+            <h1>./hanafi.dev</h1>
+        </div>
+        <div class="page-content">
+            <div class="project-grid">
+                <!-- projects here -->
+                {% for project in site.data.projects %}
+                <a href="{{ project.repo }}" class="project-tile" style="background-image: url('{{ project.image }}');">
+                    <div class="project-info">
+                        <h2>{{ project.title }}</h2>
+                        <p>{{ project.description }}</p>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+</html>
