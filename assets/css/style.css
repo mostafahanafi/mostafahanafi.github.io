@@ -21,8 +21,30 @@ body {
 
 .page-heading h1 {
     font-weight: 800;
+}
+
+.typed-cursor {
+    opacity: 1;
+    animation: blink .7s infinite;
+    font-weight: 400;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.page-heading h1, .typed-cursor {
     color: white;
     font-size: 5rem;
+    display: inline;
 }
 
 .page-content {
@@ -36,13 +58,19 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
+    opacity: 0; /* Initially hide the project grid */
+    transition: opacity 3s; /* Smooth fade-in effect */
+}
+
+.project-grid.fade-in {
+    opacity: 1; /* Show the project grid */
 }
 
 .project-tile {
     background-size: cover;
     background-position: center;
-    width: 250px;
-    height: 150px;
+    width: 350px;
+    height: 250px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -51,8 +79,9 @@ body {
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
     overflow: hidden;
-    border: none; 
+    border: none;
     box-sizing: border-box;
+    text-decoration: none;
 }
 
 .project-tile:hover {
@@ -68,5 +97,5 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    box-sizing: border-box; /* Ensure padding is included in element's total width and height */
+    box-sizing: border-box;
 }
