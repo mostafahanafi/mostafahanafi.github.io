@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{%- include head.html -%}
+
+    <div id="tsparticles"></div>
+
+    <div class="home">
+        <div class="navbar">
+            <a href="{{ site.baseurl }}/" class="navbar-item">home</a>
+            <a href="{{ site.baseurl }}/cv" class="navbar-item">cv</a>
+            <a href="{{ site.baseurl }}/blog" class="navbar-item">blog</a>
+        </div>
+        <div class="page-heading">
+            <h1 id="typed"></h1>
+        </div>
+        <div class="page-content">
+            <div class="project-grid">
+                <!-- projects here -->
+                {% for project in site.data.projects %}
+                <a href="{{ project.repo }}" class="project-tile" style="background-image: url('{{ project.image }}');">
+                    <div class="project-info">
+                        <h2>{{ project.title }}</h2>
+                        <p>{{ project.description }}</p>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/preset-triangles@3/tsparticles.preset.triangles.bundle.min.js"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <!-- Custom script to initialize Typed.js and tsParticles -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        (async () => {
+            await loadTrianglesPreset(tsParticles);
+
+            await tsParticles.load({
+                id: "tsparticles",
+                    options: {
+                        background: {
+                            color: "#121212",
+                        },
+                        particles: {
+                            move: {
+                                speed: 0.5,
+                            },
+                        },
+                        preset: "triangles",
+                    },
+            });
+        })();
+
+        var typed = new Typed('#typed', {
+          strings: ['^1200hana^100f^100i^100.^300dev^500'],
+          typeSpeed: 100,
+          onComplete: function() {
+            document.querySelector('.project-grid').classList.add('fade-in');
+            document.querySelector('#tsparticles').classList.add('fade-in');
+            document.querySelector('.navbar').classList.add('fade-in');
+          }
+        });
+    });
+    </script>
+
+</html>
