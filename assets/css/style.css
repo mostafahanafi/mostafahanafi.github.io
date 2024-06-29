@@ -144,3 +144,10 @@ body {
     justify-content: center;
     box-sizing: border-box;
 }
+
+.coming-soon {
+    color: white;
+    font-size: 3rem;
+    text-align: center;
+    margin-top: 50px;
+}
